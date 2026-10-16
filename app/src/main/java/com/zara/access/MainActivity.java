@@ -1,33 +1,11 @@
-name: Build APK
+package com.zara.access;
 
-on:
-  push:
-    branches: [ main, master ]
-  workflow_dispatch:
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.4'
-
-      - name: Build Debug APK
-        run: gradle assembleDebug --stacktrace --no-daemon
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: ZaraAccess-APK
-          path: app/build/outputs/apk/debug/*.apk
-          retention-days: 30
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+}
